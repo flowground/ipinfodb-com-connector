@@ -1,0 +1,68 @@
+{
+    "title": "IPInfoDB IP Address Lookup",
+    "description": "The API returns the location of an IP address (country, region, city, zipcode, latitude, longitude) and the associated timezone in XML, JSON or plain text format.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/ipinfodb.com/1.0/openapi.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.ipinfodb.com",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "get_v3_ip_city_": {
+            "main": "./lib/actions/get_v3_ip_city_.js",
+            "title": "Get location of an IP address",
+            "description": "Get location of an IP address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v3_ip_city_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v3_ip_country_": {
+            "main": "./lib/actions/get_v3_ip_country_.js",
+            "title": "Get country of an IP address",
+            "description": "Get country of an IP address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v3_ip_country_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

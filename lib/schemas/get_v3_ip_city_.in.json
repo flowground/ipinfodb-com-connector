@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "ip": {
+            "required": true,
+            "type": "string"
+        },
+        "format": {
+            "enum": [
+                "json",
+                "xml"
+            ],
+            "type": "string"
+        },
+        "key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
